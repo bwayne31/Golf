@@ -1,3 +1,4 @@
+
 /* Golf GPS – self-contained stylesheet (no internet required) */
 
 * { box-sizing: border-box; }
@@ -182,4 +183,47 @@ button:hover.hover\:scale-105,
 
   .dark\:hover\:bg-zinc-600:hover { background-color: #52525b; }
   .dark\:hover\:bg-zinc-700:hover { background-color: #3f3f46; }
+}
+
+/* =====================================================
+   LANDSCAPE MODE — makes better use of a wide, short
+   screen instead of showing a tall skinny card with
+   empty space on both sides.
+   ===================================================== */
+@media (orientation: landscape) and (max-height: 550px) {
+  body { padding: 0.5rem; }
+
+  .max-w-sm { max-width: 700px; }
+  .min-h-\[80vh\] { min-height: 96vh; }
+  .p-8 { padding: 1rem 1.75rem; }
+
+  /* Shrink some spacing so more fits without scrolling */
+  .mb-6 { margin-bottom: 0.5rem; }
+  .mt-6 { margin-top: 0.5rem; }
+  .mb-8 { margin-bottom: 1rem; }
+  .space-y-8 > * + * { margin-top: 1rem; }
+  .text-4xl { font-size: 1.75rem; line-height: 2rem; }
+  .text-2xl { font-size: 1.25rem; line-height: 1.75rem; }
+
+  /* Main GPS screen: put the distance grid and hazards
+     side-by-side instead of stacked, using the extra width */
+  #main-view {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+    align-items: start;
+  }
+  /* header row (scorecard/course name/wake lock) spans full width */
+  #main-view > div:nth-child(1) { grid-column: 1 / -1; }
+  /* distance grid (front/center/back) — left column */
+  #main-view > div:nth-child(2) { grid-column: 1; }
+  /* hazards row — right column, next to the distance grid */
+  #main-view > div:nth-child(3) { grid-column: 2; grid-row: 2; }
+  #message-area { grid-column: 1 / -1; }
+  #shot-distance-display { grid-column: 1 / -1; }
+  /* previous/next buttons — left column */
+  #main-view > div:nth-child(6) { grid-column: 1; }
+  /* start shot button — right column, lined up with prev/next */
+  #shot-tracker-btn { grid-column: 2; margin-top: 0; align-self: end; }
 }
