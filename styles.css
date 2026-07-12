@@ -213,6 +213,13 @@ button:hover.hover\:scale-105,
   .py-3 { padding-top: 0.4rem; padding-bottom: 0.4rem; }
   .text-4xl { font-size: 1.4rem; line-height: 1.6rem; }
   .text-2xl { font-size: 1.1rem; line-height: 1.5rem; }
+
+  /* Make just the Front/Center/Back yardage numbers bigger —
+     these are the main thing you're glancing at on the course */
+  #distance-front, #distance-center, #distance-back {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
   .text-sm { font-size: 0.7rem; line-height: 0.9rem; }
   .text-xs { font-size: 0.62rem; line-height: 0.8rem; }
   .h-6 { height: 1rem; }
